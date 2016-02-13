@@ -21,6 +21,10 @@
 <script type="text/javascript">
     var app= angular.module("myapp",[]);
 
+    function reverse(s){
+        return s.split("").reverse().join("");
+    }
+
     app.directive("charlene", function () {
       return {
         restrict: "E", 
@@ -42,7 +46,14 @@
 
           if (attr.equipment) {
             scope.pev = attr.equipment; 
+            scope.charv = reverse(attr.equipment);
           }
+
+          scope.$watch("pev", function(newValue, oldValue) {
+            if (newValue){
+                scope.charv = reverse(newValue);
+            }
+          });
         }
       }
     });
