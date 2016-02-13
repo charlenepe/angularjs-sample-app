@@ -2,7 +2,48 @@
 <html>
 <head>
     <title>Index</title>
+    <style type="text/css">
+        body{
+            color: red;
+        }
 
+        .worms{
+            background-color: green;
+            color: white;
+
+        }
+
+        .cockroaches{
+            background-color: black;
+            border-color: green;
+            border-style: solid;
+            font-family: sans-serif;
+        }
+
+        .rats{
+            background-color: gray;
+            border-color: white;
+            border-style: dotted;
+            font-family: Tahoma;
+        }
+
+        .durian{
+            background-color: yellow;
+            font-family: Arial;
+        }
+
+        .oatmeal{
+            background-color: #996633;
+            border-style: solid;
+            border-color: blue;
+        }
+
+        .colds{
+            background-color: aqua;
+            border-style: none;
+        }
+
+    </style>
 </head>
 <body>
     <div ng-app="myapp">
@@ -15,16 +56,16 @@
         <pe></pe>
         <pe equipment="Phone"></pe>
         <pe></pe>
-        <roselle likes="things"></roselle>
-        <roselle likes="flowers"></roselle>
-        <roselle likes="books"></roselle>
-        <roselle likes="eating"></roselle>
-        <roselle likes="coffee"></roselle>
-        <roselle likes="milk"></roselle>
-        <roselle likes="ballpen"></roselle>
-        <roselle likes="notebook"></roselle>
-        <roselle likes="paper"></roselle>
-        <roselle likes="sleeping"></roselle>
+        <roselle likes="things" hates="cockroaches"></roselle>
+        <roselle likes="flowers" hates="rats"></roselle>
+        <roselle likes="books" hates="rats"></roselle>
+        <roselle likes="eating" hates="rats"></roselle>
+        <roselle likes="coffee" hates="cockroaches"></roselle>
+        <roselle likes="milk" hates="durian"></roselle>
+        <roselle likes="ballpen" hates="oatmeal"></roselle>
+        <roselle likes="notebook" hates="colds"></roselle>
+        <roselle likes="paper" hates="oatmeal"></roselle>
+        <roselle likes="sleeping" hates="durian"></roselle>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     
@@ -49,11 +90,30 @@
         scope: {},
         restrict: "E", 
         replace: true,
-        template: '<div><span class="roselle">{{ pagkain }}</span><br /></div>',
+        template: '<div class="{{ kainisan }}"><span>{{ pagkain }}</span><br /></div>',
         link: function (scope, element, attr, ctrl, transclude) {
           if (attr.likes) {
             scope.pagkain = (attr.likes).toUpperCase(); 
           }
+
+          if (attr.hates){
+            scope.kainisan= attr.hates;
+          }
+
+          element.on('click', function(e) {
+            
+            if (scope.kainisan === "oatmeal"){
+                scope.kainisan = "colds";
+                scope.$apply();
+            } else if (scope.kainisan === "colds") {
+                scope.kainisan = "oatmeal";
+                scope.$apply();
+            }
+
+
+
+
+          });
         }
 
       }
