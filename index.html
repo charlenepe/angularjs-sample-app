@@ -49,6 +49,12 @@
             border-color: white;
         }
 
+        #timeless input{
+            color: #6666FF;
+
+
+        }
+
     </style>
 </head>
 <body>
@@ -72,6 +78,7 @@
         <roselle likes="notebook" hates="colds"></roselle>
         <roselle likes="paper" hates="oatmeal"></roselle>
         <roselle likes="sleeping" hates="durian"></roselle>
+        <lim makes="time"></lim>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     
@@ -90,6 +97,22 @@
         template: '<div class="charlene"><span>A lot of things inside</span></div>'
       }
     });
+
+
+    app.directive("lim", function () {
+      return {
+        restrict: "E", 
+        replace: true,
+        template: '<div class="lim" id="{{ gusto }}"><input type="text"/></div>',
+
+        link: function (scope, element, attr, ctrl, transclude) {
+          if (attr.makes) {
+            scope.gusto = "timeless";
+          }
+        }
+      }
+
+     });
 
     app.directive("roselle", function () {
       return {
