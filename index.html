@@ -15,6 +15,16 @@
         <pe></pe>
         <pe equipment="Phone"></pe>
         <pe></pe>
+        <roselle likes="things"></roselle>
+        <roselle likes="flowers"></roselle>
+        <roselle likes="books"></roselle>
+        <roselle likes="eating"></roselle>
+        <roselle likes="coffee"></roselle>
+        <roselle likes="milk"></roselle>
+        <roselle likes="ballpen"></roselle>
+        <roselle likes="notebook"></roselle>
+        <roselle likes="paper"></roselle>
+        <roselle likes="sleeping"></roselle>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     
@@ -25,6 +35,7 @@
         return s.split("").reverse().join("");
     }
 
+
     app.directive("charlene", function () {
       return {
         restrict: "E", 
@@ -32,6 +43,24 @@
         template: '<div class="charlene"><span>A lot of things inside</span></div>'
       }
     });
+
+    app.directive("roselle", function () {
+      return {
+        scope: {},
+        restrict: "E", 
+        replace: true,
+        template: '<div><span class="roselle">{{ pagkain }}</span><br /></div>',
+        link: function (scope, element, attr, ctrl, transclude) {
+          if (attr.likes) {
+            scope.pagkain = (attr.likes).toUpperCase(); 
+          }
+        }
+
+      }
+    });
+
+
+
 
     app.directive("pe", function () {
       return {
