@@ -43,6 +43,12 @@
             border-style: none;
         }
 
+        .fever{
+            background-color: #CC3366;
+            border-style: solid;
+            border-color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -97,8 +103,21 @@
           }
 
           if (attr.hates){
-            scope.kainisan= attr.hates;
+            scope.kainisan = attr.hates;
           }
+
+          x= function(e){
+            scope.kainisan = "fever";
+            scope.$apply();
+          }
+
+          y= function(e){
+            scope.kainisan = attr.hates;
+            scope.$apply();
+          }
+
+          element.on('mouseenter', x);
+          element.on('mouseleave', y);
 
           element.on('click', function(e) {
             
