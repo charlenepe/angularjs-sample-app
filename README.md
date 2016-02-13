@@ -16,6 +16,8 @@ git log
 git push origin master  
 history  
 
+bower install angular
+
 
 Contributors:
 
