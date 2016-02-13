@@ -1,2 +1,3 @@
-# angularjs-sample-app
-AngularJS sample app
+Contributors:
+
+Charlene Pe
