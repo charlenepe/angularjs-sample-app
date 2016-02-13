@@ -11,9 +11,9 @@
         <input type="password" ng-model="another"/>
         <div>{{ another }}</div>
         <charlene></charlene>
+        <pe equipment="laptop"></pe>
         <pe></pe>
-        <pe></pe>
-        <pe></pe>
+        <pe equipment="Phone"></pe>
         <pe></pe>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
@@ -34,7 +34,16 @@
         scope: {},
         restrict: "E", 
         replace: true,
-        template: '<div class="pe"><input type="text" ng-model="pev"/>{{ pev }}</div>'
+        template: '<div class="pe"><span>{{ charv }}</span><input type="text" ng-model="pev"/>{{ pev }}</div>',
+        link: function (scope, element, attr, ctrl, transclude) {
+          scope.charv = "world";
+          console.log(attr);
+          console.log(attr.equipment);
+
+          if (attr.equipment) {
+            scope.pev = attr.equipment; 
+          }
+        }
       }
     });
 
