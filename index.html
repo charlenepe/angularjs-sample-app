@@ -11,6 +11,10 @@
         <input type="password" ng-model="another"/>
         <div>{{ another }}</div>
         <charlene></charlene>
+        <pe></pe>
+        <pe></pe>
+        <pe></pe>
+        <pe></pe>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     
@@ -24,6 +28,17 @@
         template: '<div class="charlene"><span>A lot of things inside</span></div>'
       }
     });
+
+    app.directive("pe", function () {
+      return {
+        scope: {},
+        restrict: "E", 
+        replace: true,
+        template: '<div class="pe"><input type="text" ng-model="pev"/>{{ pev }}</div>'
+      }
+    });
+
+
 </script>
 </body>
 </html>
